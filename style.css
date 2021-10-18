@@ -1,0 +1,151 @@
+*{
+    margin: 0;
+    padding: 0;
+    color: rgba(226, 233, 233, 0.932);
+    transition: 300ms;
+}
+body{
+    background: rgb(10, 0, 15);
+    width: 100vw;
+    height: 100vh;
+    font-family: 'Poppins', sans-serif;
+        -webkit-touch-callout: none; /* iOS Safari */
+          -webkit-user-select: none; /* Safari */
+           -khtml-user-select: none; /* Konqueror HTML */
+             -moz-user-select: none; /* Old versions of Firefox */
+              -ms-user-select: none; /* Internet Explorer/Edge */
+                  user-select: none; /* Non-prefixed version, currently
+                                        supported by Chrome, Edge, Opera and Firefox */
+}
+body::before{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -100;
+    background: linear-gradient(rgb(186, 17, 17),rgb(199, 199, 17));
+    clip-path: circle(25% at 30% 30%);
+}
+body::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -100;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(rgb(16, 16, 208),rgb(21, 174, 21));
+    clip-path: circle(20% at 70% 70%);
+}
+.container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.card{
+    background: rgba(132, 132, 132, 0.061);
+    border-radius: 10px;
+    height: 597px;
+    display: grid;
+    grid-template-columns: 1;
+    border-top: 1px solid rgba(255, 255, 255, 0.122);
+    border-left: 1px solid rgba(255, 255, 255, 0.122);
+    backdrop-filter: blur(50px);
+    box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.387);
+    overflow: hidden;
+}
+.display{
+    height: 596px;
+    height: 140px;
+    width: 304px;
+    display: grid;
+    grid-column: span 4;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.122);
+}
+.container .card .value{
+    height: 40px;
+    width: 100%;
+    bottom: 508;
+    position: absolute;
+    display: grid;
+    grid-column: span 4;
+    outline: none;
+    border: none;
+    text-align: right;
+    padding: 10px;
+    font-size: 25px;
+    background: none;
+    color: rgb(130, 130, 130);
+}
+.container .card .value.big{
+    font-size: 35px;
+    color: rgba(226, 233, 233, 0.932);
+}
+.value.big.inactive{
+    transform: translate(-5px,-40px);
+    color: rgb(130, 130, 130);
+    opacity: 0%;
+}
+.value.small.active{
+    height: 80px;
+    font-size: 35px;
+    transform: translateY(-30px);
+    color: rgba(226, 233, 233, 0.932);
+}
+.container .card .display .value.small{
+    position: absolute;
+    width: 100%;
+    height: 50px;
+    bottom: 470;
+    border: none;
+}
+.num.history img{
+    width: 21px;
+    filter: invert() opacity(80%);
+}
+.container .card span{
+    display: grid;
+    width: 75px;
+    height: 75px;
+    place-items: center;
+    cursor: pointer;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.122);
+    border-right: 1px solid rgba(255, 255, 255, 0.122);
+    font-size: 18;
+}
+.container .card span:active{
+    background: rgb(216, 216, 216);
+    color: rgb(20, 20, 20);
+}
+.container .card .clear{
+    grid-column: span 2;
+    width: 151px;
+    background: rgba(198, 16, 16, 0.394);
+}
+.container .card .plus{
+    grid-row: span 2;
+    height: 151px;
+    background: rgba(159, 191, 16, 0);
+}
+.container .card .equals{
+    background: rgba(9, 212, 223, 0.422); 
+    width: 151px;
+    grid-column: span 2;
+}
+.container .card .del{
+    background: rgba(223, 138, 10, 0.53); 
+}
+@media (hover: hover) and (pointer: fine) {
+    .container .card span:hover{
+        /* background: rgba(177, 177, 177, 0.163); */
+        filter: brightness(130%) saturate(70%);
+    }
+    .num:hover{
+        background: rgba(167, 167, 167, 0.122);
+    }
+    #plus:hover{
+        background: rgba(167, 167, 167, 0.122);
+    }
+}

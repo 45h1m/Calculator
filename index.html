@@ -1,0 +1,67 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400&display=swap" rel="stylesheet">
+    <script src="main.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <title>Calculator</title>
+</head>
+<body>
+    <form class="container" name="calc">
+        <div class="card">
+            <div class="display">
+                <input id="ansBig" type="text" readonly class="value big" name="txt" value="0">
+                <input id="ans" type="text" readonly class="value small" name="txt2" value="0">
+                <!-- <i class="fa fa-close" aria-hidden="true"></i> -->
+            </div>
+            <span class="clear" onclick="clearDisplay();">C</span>
+            <span class="del" onclick="back();"><i class="fa fa-long-arrow-left" aria-hidden="true"></i></span>
+            <span class="num divide" onclick="calc.txt.value += '/'">/</span>
+            <span class="num" onclick="numClick(this);">7</span>
+            <span class="num" onclick="numClick(this);">8</span>
+            <span class="num" onclick="numClick(this);">9</span>
+            <span class="num minus" onclick="calc.txt.value += '-'; toggleDisplay();">-</span>
+            <span class="num" onclick="numClick(this);">4</span>
+            <span class="num" onclick="numClick(this);">5</span>
+            <span class="num" onclick="numClick(this);">6</span>
+            <span class="num percent" onclick="calc.txt.value += '%'; toggleDisplay();">%</span>
+            <span class="num" onclick="numClick(this);">1</span>
+            <span class="num" onclick="numClick(this);">2</span>
+            <span class="num" onclick="numClick(this);">3</span>
+            <span class="num" onclick="calc.txt.value += '*'; toggleDisplay();">X</span>
+            <span class="num" onclick="calc.txt.value += '.'; toggleDisplay();">.</span>
+            <span class="num" onclick="numClick(this);">0</span>
+            <span class="num" onclick="numClick(this);">00</span>
+            <span class="num plus" id="plus" onclick="calc.txt.value += '+'; toggleDisplay();">+</span>
+            <span class="num history" id="hist" data-long-press-delay="500ms" onclick="history();"><img src="history.png" alt=""></span>
+            <span onclick="validate();" class="equals">=</span>
+        </div>
+    </form>
+    <script type="text/javascript" src="vanilla-tilt.js"></script>
+    <script type="text/javascript">
+        VanillaTilt.init(document.querySelector(".card"), {
+            max: 5,
+            speed: 400,
+            gyroscope: true
+        });
+        
+        //It also supports NodeList
+        //VanillaTilt.init(document.querySelectorAll(".your-element"));
+    </script>
+    <script>
+        $('.card').click(function(event){
+            if(document.getElementById("ansBig").value!="")
+            document.getElementById("ans").value=eval(calc.txt.value);
+            else if(document.getElementById("ansBig").value==""){
+                document.getElementById("ans").value=0;
+                document.getElementById("ansBig").value=0;
+            }
+        });
+    </script>
+</body>
+</html>
